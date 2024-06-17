@@ -1,6 +1,6 @@
 package demo;
 
-public class Bicicleta {
+public class Bicicleta{
 	//Atributos de la Clase Bicicleta:
 	private String nombreBicicleta;
 	private double peso;

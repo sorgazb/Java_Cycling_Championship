@@ -10,7 +10,7 @@ public class Ciclista {
 	private Bicicleta bicicleta;
 	private double habilidad;
 	private double energia;
-	private Map<String, Double> resultados;
+	public Map<String, Double> resultados;
 	
 	//Constructor de la Clase Ciclista:
 	public Ciclista(String nombreCiclista, Bicicleta bicicleta, double habilidad, double energia) {
@@ -49,6 +49,16 @@ public class Ciclista {
 	
 	//Funcionalidades de la Clase Ciclista:
 	
+	//Metodo para comprobar si tiene bicicleta para participar en la etapa.
+	public boolean tieneBicileta() {
+		boolean tiene=true;
+		if(getBicicleta()==null) {
+			setEnergia(0);
+			tiene=false;
+		}
+		return tiene;
+	}
+	
 	//Metodo que nos informa si el ciclista ha abandonado o no:
 	public boolean haAbandonado() {
 		boolean haAbandonado=false;
@@ -68,6 +78,31 @@ public class Ciclista {
 		}
 	}
 	
+	//Metodo con el cual podemos obtener todas las estadisticas de los resultados del Ciclista:
+	public void obtenerInformacionResultados() {
+		int numeroEtapas=0;
+		double tiempoAcumulado=0;
+		String nombreEtapaAbandono="";
+		for(String etapa:resultados.keySet()) {
+			if(resultados.get(etapa)<0){
+				numeroEtapas++;
+				nombreEtapaAbandono=etapa;
+			}else {
+				numeroEtapas++;
+				tiempoAcumulado+=resultados.get(etapa);
+			}
+		}
+		System.out.println("Ha participado en "+numeroEtapas+" etapas.");
+		System.out.println("Ha acumulado "+tiempoAcumulado+" minutos.");
+		if(!nombreEtapaAbandono.equals("")) {
+			System.out.println("Abandonó en la Etapa "+nombreEtapaAbandono+".");
+		}
+	}
+	
+	/*
+	 * Metodo que nos permite usar la Bicicleta en la Etapa asignada, almacenando en el mapa de Resultados
+	 * los distintos posibles resultados. 
+	 */
 	public void usarBicicletaEtapa(Bicicleta b, Etapa e) {
 		double tiempo=b.tiempoFinalizarEtapa(this, e);
 		setEnergia(getEnergia()-tiempo);
@@ -81,5 +116,6 @@ public class Ciclista {
 			}
 		}
 	}
+		
 	
 }
