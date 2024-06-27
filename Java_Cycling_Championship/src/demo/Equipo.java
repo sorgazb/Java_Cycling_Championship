@@ -3,6 +3,7 @@ package demo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -82,8 +83,19 @@ public class Equipo {
 	
 	//
 	public void asignarBicicletasCiclista() {
-		
+		for (int i = 0; i < ciclistas.size(); i++) {
+			if(!ciclistasAbandonado.contains(ciclistas.get(i))) {
+				ciclistas.get(i).setBicicleta(bicicletas.get(i));
+				}
+		}
 	}
 	
+	public void anadirBicicleta(Bicicleta b) {
+		bicicletas.add(b);
+	}
+	
+	public void anadirCiclista(Ciclista c) {
+		ciclistas.add(c);
+	}
 	
 }
