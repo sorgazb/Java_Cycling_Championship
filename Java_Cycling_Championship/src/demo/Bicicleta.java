@@ -1,6 +1,7 @@
 package demo;
 
-public class Bicicleta{
+
+public class Bicicleta implements Comparable<Bicicleta>{
 	//Atributos de la Clase Bicicleta:
 	private String nombreBicicleta;
 	private double peso;
@@ -57,4 +58,22 @@ public class Bicicleta{
 		return tiempoNecesario;
 	}
 
+	/*
+	 * 
+	 */
+	@Override
+	public int compareTo(Bicicleta otraBicicleta) {
+		int comparacion=0;
+		
+		if(peso > otraBicicleta.peso) {
+			comparacion=1;
+		}
+		if(peso < otraBicicleta.peso) {
+			comparacion=-1;
+		}
+		if(comparacion==0) {
+			return getNombreBicicleta().compareTo(otraBicicleta.getNombreBicicleta());
+		}
+		return comparacion;
+	}
 }

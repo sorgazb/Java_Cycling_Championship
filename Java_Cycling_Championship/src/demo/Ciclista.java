@@ -3,22 +3,24 @@ package demo;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Ciclista {
+public class Ciclista{
 	
 	//Atributos de la Clase Ciclista:
 	private String nombreCiclista;
 	private Bicicleta bicicleta;
 	private double habilidad;
 	private double energia;
+	private Equipo equipo;
 	public Map<String, Double> resultados;
 	
 	//Constructor de la Clase Ciclista:
-	public Ciclista(String nombreCiclista, Bicicleta bicicleta, double habilidad, double energia) {
+	public Ciclista(String nombreCiclista, double habilidad, double energia, Equipo equipo){
 		this.nombreCiclista = nombreCiclista;
-		this.bicicleta = bicicleta;
+		this.bicicleta = null;
 		this.habilidad = habilidad;
 		this.energia = energia;
 		this.resultados = new HashMap<String, Double>();
+		this.equipo=equipo;
 	}
 	
 	//Metodos Getters & Setters de la Clase Ciclista:
@@ -46,9 +48,15 @@ public class Ciclista {
 	public void setEnergia(double energia) {
 		this.energia = energia;
 	}
+	public Equipo getEquipo() {
+		return equipo;
+	}
+	public void setEquipo(Equipo equipo) {
+		this.equipo = equipo;
+	}
 	
 	//Funcionalidades de la Clase Ciclista:
-	
+
 	//Metodo para comprobar si tiene bicicleta para participar en la etapa.
 	public boolean tieneBicileta() {
 		boolean tiene=true;
@@ -116,6 +124,20 @@ public class Ciclista {
 			}
 		}
 	}
-		
 	
+	public double obtenerTiempoAcumuladoSinAbandonar() {
+		double tiempoAcumulado=0;
+		for(String etapa:resultados.keySet()) {
+			if(resultados.get(etapa)>0){
+				tiempoAcumulado+=resultados.get(etapa);
+			}
+		}
+		return tiempoAcumulado;
+	}
+	
+	@Override
+	public String toString() {
+		return "<ciclista:"+nombreCiclista+"> <energia:"+energia+"> <tiempo acumulado sin abandonar:"+obtenerTiempoAcumuladoSinAbandonar()+"> <abandonado:"+haAbandonado()+">";
+	}
+		
 }
