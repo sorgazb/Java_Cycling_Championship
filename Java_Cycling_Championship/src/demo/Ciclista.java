@@ -111,9 +111,12 @@ public class Ciclista{
 	 * Metodo que nos permite usar la Bicicleta en la Etapa asignada, almacenando en el mapa de Resultados
 	 * los distintos posibles resultados. 
 	 */
-	public void usarBicicletaEtapa(Bicicleta b, Etapa e) {
+	public void usarBicicletaEtapa(Bicicleta b, Etapa e) {;
 		double tiempo=b.tiempoFinalizarEtapa(this, e);
+		double scale = Math.pow(10, 2);
+		tiempo = Math.ceil(tiempo * scale) / scale;
 		setEnergia(getEnergia()-tiempo);
+		this.energia=Math.ceil(getEnergia() * scale) / scale;
 		if(haAbandonado()==true) {
 			resultados.put(e.getNombreEtapa(), tiempo);
 		}else {
@@ -123,6 +126,10 @@ public class Ciclista{
 				resultados.put(e.getNombreEtapa(), tiempo);
 			}
 		}
+		System.out.println("+++ Con estas condiciones el ciclista "+getBicicleta()+" con la bicicleta "+b.getNombreBicicleta()+
+				"alcanza una velocidad de "+b.obtenerVelocidadCiclista(this, e)+"km/hora +++");
+		System.out.println("+++ "+getNombreCiclista()+" termina la etapa en "+tiempo+" minutos +++");
+		System.out.println("+++ La energia del ciclista "+getNombreCiclista()+" tras la carrera es de "+getEnergia()+"+++");
 	}
 	
 	public double obtenerTiempoAcumuladoSinAbandonar() {

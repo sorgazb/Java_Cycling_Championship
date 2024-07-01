@@ -45,6 +45,8 @@ public class Bicicleta implements Comparable<Bicicleta>{
 	public double obtenerVelocidadCiclista(Ciclista c, Etapa e) {
 		double velocidad=0;
 		velocidad=(c.getHabilidad()*100)/(peso*e.getDificultad());
+		double scale = Math.pow(10, 2);
+		velocidad = Math.ceil(velocidad * scale) / scale;
 		return velocidad;
 	}
 	

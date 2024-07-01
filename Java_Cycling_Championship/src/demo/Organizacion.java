@@ -34,6 +34,18 @@ public class Organizacion {
 		mostrarEtapasCampeonato();
 		equipos.sort(new ComparatorEquiposNombre());
 		mostrarEquiposCampeonato();
+		simularEtapas();
+	}
+	
+	public void inscribirCiclistasCarrera() {
+		for(Equipo equipo:equipos) {
+			equipo.asignarBicicletasCiclista();
+			for(Ciclista ciclista:equipo.ciclistas) {
+				if(ciclista.haAbandonado()==false) {
+					ciclistasCarrera.add(ciclista);
+				}
+			}
+		}
 	}
 	
 	public void mostrarEtapasCampeonato() {
@@ -47,6 +59,7 @@ public class Organizacion {
 	}
 	
 	public void mostrarEquiposCampeonato() {
+		inscribirCiclistasCarrera();
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 		System.out.println("%%%%%%%%% EQUIPOS DEL CAMPEONATO %%%%%%%%%%");
 		System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
@@ -59,5 +72,42 @@ public class Organizacion {
 			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 		}
 		System.out.println("\n");
+	}
+	
+	public void simularEtapas() {
+		int contador=1;
+		for(Etapa etapa:etapas) {
+			System.out.println("********************************************************************************************************");
+			System.out.println("************* CARRERA<"+contador+"> EN "+etapa+" *************");
+			System.out.println("********************************************************************************************************");
+			System.out.println("********************************************************************************************************");
+			System.out.println("************************** Ciclistas que van a competir en"+ etapa.getNombreEtapa() +" *************************");
+			System.out.println("********************************************************************************************************");
+			mostrarCiclistasCompetirEtapa();
+			System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+			System.out.println("+++++++++++++++++++++++++ Comienza la carrera en "+etapa.getNombreEtapa()+" ++++++++++++++++++++++++++");
+			System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+			simularParticipacionCiclistaEtapa(etapa);
+			contador++;
+		}
+	}
+	
+	public void mostrarCiclistasCompetirEtapa() {
+		for(Ciclista ciclista:ciclistasCarrera) {
+			System.out.println(ciclista);
+		}
+	}
+	
+	public void simularParticipacionCiclistaEtapa(Etapa e) {
+		int contadorTotalCiclistas=ciclistasCarrera.size();
+		int contadoCiclista=1;
+		for(Ciclista ciclista:ciclistasCarrera) {
+			System.out.println("@@@ ciclista "+contadoCiclista+" de "+contadorTotalCiclistas);
+			System.out.println(ciclista+" con bicicleta");
+			System.out.println(ciclista.getBicicleta()+" en etapa "+e.getNombreEtapa());
+			ciclista.usarBicicletaEtapa(ciclista.getBicicleta(), e);
+			System.out.println("@@@");
+			contadoCiclista++;
+		}
 	}
 }
