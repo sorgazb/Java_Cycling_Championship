@@ -92,9 +92,9 @@ public class Equipo {
 	
 	//
 	public void establecerOrdenBicicletas() {
-		if(this.ordenCiclista.equals("Ordenadas Ascendentemente por Peso")) {
+		if(this.ordenBicicletas.equals("Ordenadas Ascendentemente por Peso")) {
 			ordenarBicicletasPeso();
-		}else if(this.ordenCiclista.equals("Ordenadas Descendentemente por Peso")){
+		}else if(this.ordenBicicletas.equals("Ordenadas Descendentemente por Peso")){
 			ordenarBicicletasPesoInverso();
 		}else {
 			System.err.println("ERROR.No contemplamos ese criterio de ordenacion.");
@@ -145,6 +145,8 @@ public class Equipo {
 			}
 		}
 		double media=minutosAcumulados/numeroCiclista;
+		double scale = Math.pow(10, 2);
+		media = Math.ceil(media * scale) / scale;
 		return media;
 	}
 	

@@ -81,7 +81,7 @@ public class Ciclista{
 	public void obtenerResultadoEtapa(Etapa e) {
 		for(String etapa:resultados.keySet()) {
 			if(etapa.equals(e.getNombreEtapa())) {
-				System.out.println("Carrera("+etapa+") - Tiempo: "+resultados.get(etapa));
+				System.out.println(getNombreCiclista()+" - Tiempo: "+resultados.get(etapa)+" minutos @@@");
 			}
 		}
 	}
@@ -136,15 +136,23 @@ public class Ciclista{
 		double tiempoAcumulado=0;
 		for(String etapa:resultados.keySet()) {
 			if(resultados.get(etapa)>0){
-				tiempoAcumulado+=resultados.get(etapa);
+				tiempoAcumulado= tiempoAcumulado+resultados.get(etapa);
 			}
 		}
+		double scale = Math.pow(10, 2);
+		tiempoAcumulado = Math.ceil(tiempoAcumulado * scale) / scale;
 		return tiempoAcumulado;
+	}
+	
+	public void obtenerTodosResultados() {
+		for(String etapa:resultados.keySet()) {
+			System.out.println("Carrera("+etapa+") - Tiempo: "+resultados.get(etapa)+" minutos @@@");
+		}
 	}
 	
 	@Override
 	public String toString() {
-		return "<ciclista:"+nombreCiclista+"> <energia:"+energia+"> <tiempo acumulado sin abandonar:"+obtenerTiempoAcumuladoSinAbandonar()+"> <abandonado:"+haAbandonado()+">";
+		return "<ciclista:"+nombreCiclista+"> <energia:"+energia+"> <habilidad:"+habilidad+"> <tiempo acumulado sin abandonar:"+obtenerTiempoAcumuladoSinAbandonar()+"> <abandonado:"+haAbandonado()+">";
 	}
 		
 }
