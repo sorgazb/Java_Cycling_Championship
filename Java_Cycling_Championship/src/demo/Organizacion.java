@@ -15,8 +15,6 @@ public class Organizacion {
 	private List<Equipo> equipos;
 	private List<Ciclista> ciclistasCarrera;
 
-	
-	
 	public Organizacion(Comparator<Etapa> comparadorEtapa) {
 		this.comparadorEtapa = comparadorEtapa;
 		this.etapas=new ArrayList<Etapa>();
@@ -132,6 +130,16 @@ public class Organizacion {
 	}
 	
 	public void obtenerClasificacionEtapa(Etapa e) {
+	    Ciclista aux;
+	    for(int i = 0;i < ciclistasCarrera.size()-1;i++){
+	        for(int j = 0;j < ciclistasCarrera.size()-i-1;j++){
+	            if(ciclistasCarrera.get(j+1).obtenerResultadoEtapaTiempo(e) <  ciclistasCarrera.get(j).obtenerResultadoEtapaTiempo(e)){    
+	                aux = ciclistasCarrera.get(j+1);
+	                ciclistasCarrera.set(j+1,ciclistasCarrera.get(j));
+	                ciclistasCarrera.set(j,aux);
+	            }
+	        }
+	    }
 		int posicion=1;
 		for(Ciclista ciclista:ciclistasCarrera) {
 			System.out.print("@@@ Posicion("+posicion+") : ");
@@ -171,6 +179,5 @@ public class Organizacion {
 			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 			posicion++;
 		}
-		
 	}
 }

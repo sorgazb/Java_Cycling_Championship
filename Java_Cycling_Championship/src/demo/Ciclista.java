@@ -86,6 +86,16 @@ public class Ciclista{
 		}
 	}
 	
+	public double obtenerResultadoEtapaTiempo(Etapa e) {
+		double tiempo=0;
+		for(String etapa:resultados.keySet()) {
+			if(etapa.equals(e.getNombreEtapa())) {
+				tiempo=resultados.get(etapa);
+			}
+		}
+		return tiempo;
+	}
+	
 	//Metodo con el cual podemos obtener todas las estadisticas de los resultados del Ciclista:
 	public void obtenerInformacionResultados() {
 		int numeroEtapas=0;

@@ -41,6 +41,4 @@ public class Etapa {
 		return "<etapa:"+nombreEtapa+"> <dificultad:"+dificultad+"> <distancia:"+distancia+">";
 	}
 	
-	
-	
 }

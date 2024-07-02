@@ -21,7 +21,5 @@ public class CiclismoDemo{
         //DatosCampeonatoAbandonos initdata = new DatosCampeonatoAbandonos(organizacion); 
             
         organizacion.gestionarCampeonato();
-	
     }    
-
 }

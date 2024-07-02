@@ -29,25 +29,16 @@ public class Equipo {
 		this.ordenCiclista=ordenCiclista;
 		this.ordenBicicletas=ordenBicicletas;
 	}
-	
-	
-	
-	
+
 	//Metodos de la Clase Equipo:
 	
 	public String getNombreEquipo() {
 		return nombreEquipo;
 	}
 
-
-
-
 	public void setNombreEquipo(String nombreEquipo) {
 		this.nombreEquipo = nombreEquipo;
 	}
-
-
-
 
 	//
 	public void establecerOrdenCiclistas() {
