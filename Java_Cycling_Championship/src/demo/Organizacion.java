@@ -168,6 +168,16 @@ public class Organizacion {
 		System.out.println("****************************************************");
 		System.out.println("******** CLASIFICACIÓN FINAL DE EQUIPOS *********");
 		System.out.println("****************************************************");
+		Equipo aux;
+	    for(int i = 0;i < equipos.size()-1;i++){
+	        for(int j = 0;j < equipos.size()-i-1;j++){
+	            if(equipos.get(j+1).obtenerMediaMinutosSinAbandonar() <  equipos.get(j).obtenerMediaMinutosSinAbandonar()){    
+	                aux = equipos.get(j+1);
+	                equipos.set(j+1,equipos.get(j));
+	                equipos.set(j,aux);
+	            }
+	        }
+	    }
 		int posicion=1;
 		for(Equipo equipo:equipos) {
 			System.out.println("@@@ Posicion("+posicion+") "+equipo.getNombreEquipo()+" con "+equipo.obtenerMediaMinutosSinAbandonar()+" minutos de media @@@");

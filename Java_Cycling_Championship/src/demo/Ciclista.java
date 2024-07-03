@@ -136,7 +136,7 @@ public class Ciclista{
 				resultados.put(e.getNombreEtapa(), tiempo);
 			}
 		}
-		System.out.println("+++ Con estas condiciones el ciclista "+getBicicleta()+" con la bicicleta "+b.getNombreBicicleta()+
+		System.out.println("+++ Con estas condiciones el ciclista "+getNombreCiclista()+" con la bicicleta "+b.getNombreBicicleta()+
 				"alcanza una velocidad de "+b.obtenerVelocidadCiclista(this, e)+"km/hora +++");
 		System.out.println("+++ "+getNombreCiclista()+" termina la etapa en "+tiempo+" minutos +++");
 		System.out.println("+++ La energia del ciclista "+getNombreCiclista()+" tras la carrera es de "+getEnergia()+"+++");

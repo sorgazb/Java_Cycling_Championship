@@ -109,14 +109,14 @@ public class Equipo {
 		//Primer bucle FOR EACH para obtener el tiempo acumulado por los ciclistas que estan participando actualmente.
 		for(Ciclista ciclista: ciclistas) {
 			for(String etapa: ciclista.resultados.keySet()) {
-				tiempoAcumulado+=ciclista.resultados.get(etapa);
+				tiempoAcumulado=tiempoAcumulado+ciclista.resultados.get(etapa);
 			}
 		}
 		//Segundo bucle FOR EACH para obtener el tiempo acumulado por los ciclistas del equipo que han abandonado.
 		for(Ciclista ciclista: ciclistasAbandonado) {
 			for(String etapa: ciclista.resultados.keySet()) {
 				if(ciclista.resultados.get(etapa)>0) {
-					tiempoAcumulado+=ciclista.resultados.get(etapa);
+					tiempoAcumulado=tiempoAcumulado+ciclista.resultados.get(etapa);
 				}
 			}
 		}
@@ -130,14 +130,17 @@ public class Equipo {
 		for(Ciclista ciclista: ciclistas) {
 			for(String etapa: ciclista.resultados.keySet()) {
 				if(ciclista.resultados.get(etapa)!=null) {
-					minutosAcumulados+=ciclista.resultados.get(etapa);
+					minutosAcumulados = minutosAcumulados+ciclista.resultados.get(etapa);
 				}
-				numeroCiclista++;
 			}
+			numeroCiclista++;
 		}
 		double media=minutosAcumulados/numeroCiclista;
 		double scale = Math.pow(10, 2);
 		media = Math.ceil(media * scale) / scale;
+		if(minutosAcumulados==0) {
+			media=0.0;
+		}
 		return media;
 	}
 	
