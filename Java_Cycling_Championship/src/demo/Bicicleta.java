@@ -1,12 +1,14 @@
 package demo;
 
+import demo.enums.PesoBicicleta;
+
 public class Bicicleta implements Comparable<Bicicleta>{
 	//Atributos de la Clase Bicicleta:
 	private String nombreBicicleta;
-	private double peso;
+	private PesoBicicleta peso;
 	
 	//Constructor de la Clase Bicicleta:
-	public Bicicleta(String nombreBicicleta, double peso) {
+	public Bicicleta(String nombreBicicleta, PesoBicicleta peso) {
 		this.nombreBicicleta = nombreBicicleta;
 		this.peso = peso;
 	}
@@ -20,11 +22,11 @@ public class Bicicleta implements Comparable<Bicicleta>{
 		this.nombreBicicleta = nombreBicicleta;
 	}
 
-	public double getPeso() {
+	public PesoBicicleta getPeso() {
 		return peso;
 	}
 
-	public void setPeso(double peso) {
+	public void setPeso(PesoBicicleta peso) {
 		this.peso = peso;
 	}
 
@@ -37,7 +39,8 @@ public class Bicicleta implements Comparable<Bicicleta>{
 	 */
 	public double obtenerVelocidadCiclista(Ciclista c, Etapa e) {
 		double velocidad=0;
-		velocidad=(c.getHabilidad()*100)/(peso*e.getDificultad());
+		double dificultad=e.getDificultad().getDificultad();
+		velocidad=(c.getHabilidad()*100)/(peso.getPeso() * dificultad);
 		double scale = Math.pow(10, 2);
 		velocidad = Math.ceil(velocidad * scale) / scale;
 		return velocidad;
@@ -49,7 +52,7 @@ public class Bicicleta implements Comparable<Bicicleta>{
 	 */
 	public double tiempoFinalizarEtapa(Ciclista c, Etapa e) {
 		double tiempoNecesario=0;
-		tiempoNecesario=(e.getDistancia()/obtenerVelocidadCiclista(c, e))*60;
+		tiempoNecesario=(e.getDistancia().getDistancia()/obtenerVelocidadCiclista(c, e))*60;
 		return tiempoNecesario;
 	}
 
@@ -60,10 +63,10 @@ public class Bicicleta implements Comparable<Bicicleta>{
 	public int compareTo(Bicicleta otraBicicleta) {
 		int comparacion=0;
 		
-		if(peso > otraBicicleta.peso) {
+		if(peso.getPeso() > otraBicicleta.peso.getPeso()) {
 			comparacion=1;
 		}
-		if(peso < otraBicicleta.peso) {
+		if(peso.getPeso() < otraBicicleta.peso.getPeso()) {
 			comparacion=-1;
 		}
 		if(comparacion==0) {

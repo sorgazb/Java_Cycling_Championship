@@ -1,13 +1,16 @@
 package demo;
 
+import demo.enums.DificultadEtapa;
+import demo.enums.DistanciaEtapa;
+
 public class Etapa {
 	//Atributos de la Clase Etapa:
 	private String nombreEtapa;
-	private double dificultad;
-	private double distancia;
+	private DificultadEtapa dificultad;
+	private DistanciaEtapa distancia;
 	
 	//Constructor parametrizado de la Clase Etapa:
-	public Etapa(String nombreEtapa, double dificultad, double distancia) {
+	public Etapa(String nombreEtapa, DificultadEtapa dificultad, DistanciaEtapa distancia) {
 		this.nombreEtapa = nombreEtapa;
 		this.dificultad = dificultad;
 		this.distancia = distancia;
@@ -20,16 +23,16 @@ public class Etapa {
 	public void setNombreEtapa(String nombreEtapa) {
 		this.nombreEtapa = nombreEtapa;
 	}
-	public double getDificultad() {
+	public DificultadEtapa getDificultad() {
 		return dificultad;
 	}
-	public void setDificultad(double dificultad) {
+	public void setDificultad(DificultadEtapa dificultad) {
 		this.dificultad = dificultad;
 	}
-	public double getDistancia() {
+	public DistanciaEtapa getDistancia() {
 		return distancia;
 	}
-	public void setDistancia(double distancia) {
+	public void setDistancia(DistanciaEtapa distancia) {
 		this.distancia = distancia;
 	}
 
