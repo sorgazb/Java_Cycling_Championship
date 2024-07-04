@@ -3,7 +3,7 @@
 <p>- Parte 1, del programa de Simulación de Campeonato Ciclista, desarrollado en Java usando el IDE de Eclipse.</p>
 <hr>
 <div align="center">
-  <h3>Tecnologías Usadas:</h3>
+  <h3>Tecnologías Usadas: </h3>
 </div>
  <div align="center">
   <a href="#">
