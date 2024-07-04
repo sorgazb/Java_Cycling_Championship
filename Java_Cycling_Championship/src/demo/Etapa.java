@@ -13,7 +13,7 @@ public class Etapa {
 		this.distancia = distancia;
 	}
 	
-	//Metodos Getters & Setters de la Clase Etapa:
+	//Métodos Getters & Setters de la Clase Etapa:
 	public String getNombreEtapa() {
 		return nombreEtapa;
 	}
@@ -35,7 +35,7 @@ public class Etapa {
 
 	//Funcionalidad de la Clase Etapa:
 	
-	//Metodo toString: nos permite mostrar las caracteristicas de la Etapa:
+	//Método toString: nos permite mostrar las características de la Etapa:
 	@Override
 	public String toString() {
 		return "<etapa:"+nombreEtapa+"> <dificultad:"+dificultad+"> <distancia:"+distancia+">";

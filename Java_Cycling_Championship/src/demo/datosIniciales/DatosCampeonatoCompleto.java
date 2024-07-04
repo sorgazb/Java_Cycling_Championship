@@ -1,4 +1,10 @@
-package demo;
+package demo.datosIniciales;
+
+import demo.Bicicleta;
+import demo.Ciclista;
+import demo.Equipo;
+import demo.Etapa;
+import demo.Organizacion;
 
 public class DatosCampeonatoCompleto {
 

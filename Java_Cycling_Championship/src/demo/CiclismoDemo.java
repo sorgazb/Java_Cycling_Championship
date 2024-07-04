@@ -1,9 +1,7 @@
 package demo;
-
-import java.lang.*;
-import java.util.*;
-
 import demo.comparadores.ComparatorEtapasDificultad;
+import demo.datosIniciales.DatosCampeonatoAbandonos;
+import demo.datosIniciales.DatosCampeonatoCompleto;
 /**
  * Main simulation class. 
  * First, initial data are loaded. 
@@ -15,9 +13,13 @@ import demo.comparadores.ComparatorEtapasDificultad;
 public class CiclismoDemo{
     
     public static void main(String[] args)  throws java.io.IOException{
+    	
         Organizacion organizacion=new Organizacion(new ComparatorEtapasDificultad());
+        
         //Descomentar de las dos líneas siguientes, la prueba que se quiera ejecutar
+        
 		DatosCampeonatoCompleto initdata = new DatosCampeonatoCompleto(organizacion); 
+		
         //DatosCampeonatoAbandonos initdata = new DatosCampeonatoAbandonos(organizacion); 
             
         organizacion.gestionarCampeonato();

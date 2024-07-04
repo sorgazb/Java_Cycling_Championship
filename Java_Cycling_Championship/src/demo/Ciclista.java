@@ -1,5 +1,4 @@
 package demo;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,7 +22,7 @@ public class Ciclista{
 		this.equipo=equipo;
 	}
 	
-	//Metodos Getters & Setters de la Clase Ciclista:
+	//Métodos Getters & Setters de la Clase Ciclista:
 	public String getNombreCiclista() {
 		return nombreCiclista;
 	}
@@ -57,7 +56,7 @@ public class Ciclista{
 	
 	//Funcionalidades de la Clase Ciclista:
 
-	//Metodo para comprobar si tiene bicicleta para participar en la etapa.
+	//Método para comprobar si tiene bicicleta para participar en la etapa.
 	public boolean tieneBicileta() {
 		boolean tiene=true;
 		if(getBicicleta()==null) {
@@ -67,7 +66,7 @@ public class Ciclista{
 		return tiene;
 	}
 	
-	//Metodo que nos informa si el ciclista ha abandonado o no:
+	//Método que nos informa si el ciclista ha abandonado o no:
 	public boolean haAbandonado() {
 		boolean haAbandonado=false;
 		if(energia<=0) {
@@ -77,15 +76,29 @@ public class Ciclista{
 		return haAbandonado;
 	}
 	
-	//Metodo que nos devuelve el resultado de una Etapa en concreto:
+	//Método que nos devuelve el resultado de una Etapa en concreto:
 	public void obtenerResultadoEtapa(Etapa e) {
-		for(String etapa:resultados.keySet()) {
-			if(etapa.equals(e.getNombreEtapa())) {
-				System.out.println(getNombreCiclista()+" - Tiempo: "+resultados.get(etapa)+" minutos @@@");
+		if(haAbandonado()==false) {
+			for(String etapa:resultados.keySet()) {
+				if(etapa.equals(e.getNombreEtapa())) {
+					System.out.println(getNombreCiclista()+" - Tiempo: "+resultados.get(etapa)+" minutos @@@");
+				}
+			}
+		}else {
+			for(String etapa:resultados.keySet()) {
+				if(etapa.equals(e.getNombreEtapa())) {
+					
+					double resultado=resultados.get(etapa);
+					double scale = Math.pow(10, 2);
+					resultado = Math.ceil(resultado * scale) / scale;
+					System.out.println(getNombreCiclista()+" - Tiempo: "+resultado+" -Además ha abandonado para el resto del campeonato !!!");;
+				}
 			}
 		}
+
 	}
 	
+	//Método que nos devuelve el tiempo concreto que tardó el Ciclista en acabar la Etapa:
 	public double obtenerResultadoEtapaTiempo(Etapa e) {
 		double tiempo=0;
 		for(String etapa:resultados.keySet()) {
@@ -96,7 +109,7 @@ public class Ciclista{
 		return tiempo;
 	}
 	
-	//Metodo con el cual podemos obtener todas las estadisticas de los resultados del Ciclista:
+	//Método con el cual podemos obtener todas las estadésticas de los resultados del Ciclista:
 	public void obtenerInformacionResultados() {
 		int numeroEtapas=0;
 		double tiempoAcumulado=0;
@@ -118,17 +131,18 @@ public class Ciclista{
 	}
 	
 	/*
-	 * Metodo que nos permite usar la Bicicleta en la Etapa asignada, almacenando en el mapa de Resultados
+	 * Método que nos permite usar la Bicicleta en la Etapa asignada, almacenando en el mapa de Resultados
 	 * los distintos posibles resultados. 
 	 */
-	public void usarBicicletaEtapa(Bicicleta b, Etapa e) {;
+	public void usarBicicletaEtapa(Bicicleta b, Etapa e) {
+		double energiaInicial=energia;
 		double tiempo=b.tiempoFinalizarEtapa(this, e);
 		double scale = Math.pow(10, 2);
 		tiempo = Math.ceil(tiempo * scale) / scale;
 		setEnergia(getEnergia()-tiempo);
 		this.energia=Math.ceil(getEnergia() * scale) / scale;
 		if(haAbandonado()==true) {
-			resultados.put(e.getNombreEtapa(), tiempo);
+			resultados.put(e.getNombreEtapa(), (energiaInicial-tiempo));
 		}else {
 			if(resultados.isEmpty()) {
 				resultados.put(e.getNombreEtapa(), tiempo);
@@ -136,12 +150,26 @@ public class Ciclista{
 				resultados.put(e.getNombreEtapa(), tiempo);
 			}
 		}
+		double energiaNegativa=(energiaInicial-tiempo);
 		System.out.println("+++ Con estas condiciones el ciclista "+getNombreCiclista()+" con la bicicleta "+b.getNombreBicicleta()+
 				"alcanza una velocidad de "+b.obtenerVelocidadCiclista(this, e)+"km/hora +++");
-		System.out.println("+++ "+getNombreCiclista()+" termina la etapa en "+tiempo+" minutos +++");
-		System.out.println("+++ La energia del ciclista "+getNombreCiclista()+" tras la carrera es de "+getEnergia()+"+++");
+		if(haAbandonado()==false) {
+			System.out.println("+++ "+getNombreCiclista()+" termina la etapa en "+tiempo+" minutos +++");
+		}else {
+			System.out.println(tiempo);
+			System.out.println("!!! El ciclista "+nombreCiclista+" se quedó sin energía a falta de "+"   "+" minutos para terminar !!!");
+			System.out.println("!!! En el momento de quedarse sin energía llevaba en la carrera "+(tiempo-(-(energiaNegativa))) +" minutos !!!");
+		}
+		if(energia==0) {
+			energiaNegativa = Math.ceil(energiaNegativa * scale) / scale;
+			System.out.println("+++ La energía del ciclista "+getNombreCiclista()+" tras la carrera es de "+energiaNegativa+"+++");
+		}else {
+			System.out.println("+++ La energía del ciclista "+getNombreCiclista()+" tras la carrera es de "+getEnergia()+"+++");
+		}
 	}
 	
+	
+	//Método que nos devuelve el tiempo total que ha realizado el Ciclista sin contar abandonos.
 	public double obtenerTiempoAcumuladoSinAbandonar() {
 		double tiempoAcumulado=0;
 		for(String etapa:resultados.keySet()) {
@@ -154,15 +182,20 @@ public class Ciclista{
 		return tiempoAcumulado;
 	}
 	
+	//Método que nos devuelve todos los resultados del Ciclista almacenados en el Mapa de ResultadosÑ
 	public void obtenerTodosResultados() {
 		for(String etapa:resultados.keySet()) {
-			System.out.println("Carrera("+etapa+") - Tiempo: "+resultados.get(etapa)+" minutos @@@");
+			double resultado=resultados.get(etapa);
+			double scale = Math.pow(10, 2);
+			resultado = Math.ceil(resultado * scale) / scale;
+			System.out.println("Carrera("+etapa+") - Tiempo: "+resultado+" minutos @@@");
 		}
 	}
 	
+	//Método toString que devuelve por pantalla toda la información del Ciclista.
 	@Override
 	public String toString() {
-		return "<ciclista:"+nombreCiclista+"> <energia:"+energia+"> <habilidad:"+habilidad+"> <tiempo acumulado sin abandonar:"+obtenerTiempoAcumuladoSinAbandonar()+"> <abandonado:"+haAbandonado()+">";
+		return "<ciclista:"+nombreCiclista+"> <energía:"+energia+"> <habilidad:"+habilidad+"> <tiempo acumulado sin abandonar:"+obtenerTiempoAcumuladoSinAbandonar()+"> <abandonado:"+haAbandonado()+">";
 	}
 		
 }
