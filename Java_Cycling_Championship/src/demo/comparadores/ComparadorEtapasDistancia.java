@@ -9,6 +9,7 @@ public class ComparadorEtapasDistancia implements Comparator<Etapa>{
 		int comparacion= Double.compare(e1.getDistancia(), e2.getDistancia());
 		if(comparacion==0) {
 			return e1.getNombreEtapa().compareTo(e2.getNombreEtapa());
+			//
 		}
 		return comparacion;
 	}
