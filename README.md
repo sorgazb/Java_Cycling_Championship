@@ -1,6 +1,7 @@
-# Java Cycling Championship: Parte 1
+# Java Cycling Championship: Parte 2
 <p>Proyecto desarrollado por @sorgazb para la asisgnatura DP de GIIC en la UEX</p>
-<p>- Parte 1, del programa de Simulación de Campeonato Ciclista, desarrollado en Java usando el IDE de Eclipse.</p>
+<p>- Parte 2, del programa de Simulación de Campeonato Ciclista, desarrollado en Java usando el IDE de Eclipse.</p>
+<p>Implentacion de Comparators, Enums y Herencias</p>
 <hr>
 <div align="center">
   <h3>Tecnologías Usadas: </h3>
