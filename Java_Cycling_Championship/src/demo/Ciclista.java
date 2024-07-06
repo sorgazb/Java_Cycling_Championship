@@ -2,18 +2,20 @@ package demo;
 import java.util.HashMap;
 import java.util.Map;
 
+import demo.enums.HabilidadCiclista;
+
 public class Ciclista{
 	
 	//Atributos de la Clase Ciclista:
 	private String nombreCiclista;
 	private Bicicleta bicicleta;
-	private double habilidad;
+	private HabilidadCiclista habilidad;
 	private double energia;
 	private Equipo equipo;
 	public Map<String, Double> resultados;
 	
 	//Constructor de la Clase Ciclista:
-	public Ciclista(String nombreCiclista, double habilidad, double energia, Equipo equipo){
+	public Ciclista(String nombreCiclista, HabilidadCiclista habilidad, double energia, Equipo equipo){
 		this.nombreCiclista = nombreCiclista;
 		this.bicicleta = null;
 		this.habilidad = habilidad;
@@ -35,10 +37,10 @@ public class Ciclista{
 	public void setBicicleta(Bicicleta bicicleta) {
 		this.bicicleta = bicicleta;
 	}
-	public double getHabilidad() {
+	public HabilidadCiclista getHabilidad() {
 		return habilidad;
 	}
-	public void setHabilidad(double habilidad) {
+	public void setHabilidad(HabilidadCiclista habilidad) {
 		this.habilidad = habilidad;
 	}
 	public double getEnergia() {
@@ -190,6 +192,12 @@ public class Ciclista{
 			resultado = Math.ceil(resultado * scale) / scale;
 			System.out.println("Carrera("+etapa+") - Tiempo: "+resultado+" minutos @@@");
 		}
+	}
+	
+	//
+	public double obtenerDestreza() {
+		double destreza=0;
+		return destreza;
 	}
 	
 	//Método toString que devuelve por pantalla toda la información del Ciclista.

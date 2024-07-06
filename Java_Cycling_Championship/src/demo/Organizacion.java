@@ -3,9 +3,11 @@ package demo;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
-import demo.comparadores.ComparatorCiclistaEnergia;
 import demo.comparadores.ComparatorCiclistasTiempoSinAbandonar;
 import demo.comparadores.ComparatorEquiposNombre;
 
@@ -13,14 +15,14 @@ public class Organizacion {
 	
 	//Atributos de la Clase Organización:
 	private Comparator<Etapa> comparadorEtapa;
-	private List<Etapa> etapas;
+	private Set<Etapa> etapas;
 	private List<Equipo> equipos;
 	private List<Ciclista> ciclistasCarrera;
 
 	//Constructor parametrizado de la Clase Organización:
 	public Organizacion(Comparator<Etapa> comparadorEtapa) {
 		this.comparadorEtapa = comparadorEtapa;
-		this.etapas = new ArrayList<Etapa>();
+		this.etapas = new TreeSet<Etapa>(comparadorEtapa);
 		this.equipos = new ArrayList<Equipo>();
 		this.ciclistasCarrera = new ArrayList<Ciclista>();
 	}
@@ -37,11 +39,11 @@ public class Organizacion {
 
 	//Método principal del programa de simulación que llama a los diferentes metodos que simulan el camponato.
 	public void gestionarCampeonato() {
+		List<Etapa> listaAuxEtapas=new ArrayList<Etapa>();
 		for (Equipo equipo : equipos) {
 			equipo.establecerOrdenCiclistas();
 			equipo.establecerOrdenBicicletas();
 		}
-		etapas.sort(comparadorEtapa);
 		mostrarEtapasCampeonato();
 		equipos.sort(new ComparatorEquiposNombre());
 		mostrarEquiposCampeonato();

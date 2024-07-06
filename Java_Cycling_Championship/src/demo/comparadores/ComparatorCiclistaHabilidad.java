@@ -7,7 +7,7 @@ import demo.Ciclista;
 public class ComparatorCiclistaHabilidad implements Comparator<Ciclista>{
 	@Override
 	public int compare(Ciclista c1, Ciclista c2) {
-		int comparacion= Double.compare(c1.getHabilidad(), c2.getHabilidad());
+		int comparacion= Double.compare(c1.getHabilidad().getHabilidad(), c2.getHabilidad().getHabilidad());
 		if(comparacion==0) {
 			return c1.getNombreCiclista().compareTo(c2.getNombreCiclista());
 		}

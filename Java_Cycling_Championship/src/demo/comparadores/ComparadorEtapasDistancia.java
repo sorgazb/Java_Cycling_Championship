@@ -6,7 +6,7 @@ import demo.Etapa;
 public class ComparadorEtapasDistancia implements Comparator<Etapa>{
 	@Override
 	public int compare(Etapa e1, Etapa e2) {
-		int comparacion= Double.compare(e1.getDistancia(), e2.getDistancia());
+		int comparacion= Double.compare(e1.getDistancia().getDistancia(), e2.getDistancia().getDistancia());
 		if(comparacion==0) {
 			return e1.getNombreEtapa().compareTo(e2.getNombreEtapa());
 			//
