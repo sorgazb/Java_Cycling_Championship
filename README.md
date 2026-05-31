@@ -1,6 +1,10 @@
 # Java Cycling Championship
 
 <p align="center">
+  <img src="https://www.unex.es/conoce-la-uex/imagen-corporativa/imagenes/logos/LogoUEX_Principal_CMYK.jpg/@@images/image" alt="Logo Universidad de Extremadura" width="280" />
+</p>
+
+<p align="center">
   <img src="https://github.com/sorgazb/Java_Cycling_Championship/assets/150727714/3fa53493-72aa-4706-b42b-500923e31808" alt="Java Cycling Championship Screenshot" />
 </p>
 
