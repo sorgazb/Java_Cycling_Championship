@@ -90,7 +90,9 @@ Abre un Pull Request describiendo tus mejoras.
 ---
 
 <p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Uex_logo.svg/320px-Uex_logo.svg.png" alt="Universidad de Extremadura" width="200" />
+  <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/UNEX.png" alt="Universidad de Extremadura" height="80"/>
+  <br/><br/>
+  <strong>Diseño y Programación (DP)</strong> &nbsp;&middot;&nbsp; Grado en Ingeniería Informática y de Computadores &nbsp;&middot;&nbsp; Universidad de Extremadura
   <br/>
-  Proyecto Final DP &ndash; GIIC &ndash; Universidad de Extremadura &ndash; Sergio Orgaz Bravo
+  Sergio Orgaz Bravo
 </p>
