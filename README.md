@@ -1,10 +1,6 @@
 # Java Cycling Championship
 
 <p align="center">
-  <img src="https://www.unex.es/conoce-la-uex/imagen-corporativa/imagenes/logos/LogoUEX_Principal_CMYK.jpg/@@images/image" alt="Logo Universidad de Extremadura" width="280" />
-</p>
-
-<p align="center">
   <img src="https://github.com/sorgazb/Java_Cycling_Championship/assets/150727714/3fa53493-72aa-4706-b42b-500923e31808" alt="Java Cycling Championship Screenshot" />
 </p>
 
@@ -93,4 +89,8 @@ Abre un Pull Request describiendo tus mejoras.
 
 ---
 
-<p align="center">Proyecto Final DP &ndash; GIIC &ndash; Universidad de Extremadura &ndash; Sergio Orgaz Bravo</p>
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Uex_logo.svg/320px-Uex_logo.svg.png" alt="Universidad de Extremadura" width="200" />
+  <br/>
+  Proyecto Final DP &ndash; GIIC &ndash; Universidad de Extremadura &ndash; Sergio Orgaz Bravo
+</p>
